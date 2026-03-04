@@ -1,0 +1,15 @@
+{
+    "name": "giantpeach/wp-sane-defaults",
+    "description": "WordPress mu-plugin that fixes common insecure and annoying defaults.",
+    "type": "wordpress-muplugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Giant Peach",
+            "homepage": "https://giantpeach.agency"
+        }
+    ],
+    "require": {
+        "php": ">=8.0"
+    }
+}
