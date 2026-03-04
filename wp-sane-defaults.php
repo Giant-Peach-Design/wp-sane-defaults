@@ -23,9 +23,14 @@ add_filter('rest_endpoints', function (array $endpoints): array {
 });
 
 /**
- * Disable XML-RPC entirely.
+ * Disable XML-RPC entirely and block requests to xmlrpc.php.
  */
 add_filter('xmlrpc_enabled', '__return_false');
+
+if (defined('XMLRPC_REQUEST') && XMLRPC_REQUEST) {
+    status_header(403);
+    exit;
+}
 
 /**
  * Remove the X-Pingback header.
