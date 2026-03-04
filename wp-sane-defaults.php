@@ -140,3 +140,26 @@ add_action('admin_init', function (): void {
         remove_action('admin_notices', 'update_nag', 3);
     }
 });
+
+/**
+ * Grant Editors access to Appearance > Menus.
+ */
+add_action('admin_init', function (): void {
+    $editor = get_role('editor');
+    if ($editor && ! $editor->has_cap('edit_theme_options')) {
+        $editor->add_cap('edit_theme_options');
+    }
+});
+
+/**
+ * Hide the other Appearance submenus from Editors (Themes, Widgets, etc.)
+ * so they only see Menus.
+ */
+add_action('admin_menu', function (): void {
+    if (current_user_can('edit_theme_options') && ! current_user_can('manage_options')) {
+        remove_submenu_page('themes.php', 'themes.php');
+        remove_submenu_page('themes.php', 'widgets.php');
+        remove_submenu_page('themes.php', 'customize.php');
+        remove_submenu_page('themes.php', 'theme-editor.php');
+    }
+});
