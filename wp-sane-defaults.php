@@ -164,7 +164,5 @@ add_action('admin_menu', function (): void {
     if (current_user_can('edit_theme_options') && ! current_user_can('manage_options')) {
         remove_submenu_page('themes.php', 'themes.php');
         remove_submenu_page('themes.php', 'widgets.php');
-        remove_submenu_page('themes.php', 'customize.php');
-        remove_submenu_page('themes.php', 'theme-editor.php');
     }
 });
